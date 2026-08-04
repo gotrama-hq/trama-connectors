@@ -1,0 +1,68 @@
+{
+  "name": "trama-connectors",
+  "version": "0.1.0",
+  "description": "Open-source platform connectors that map Wix, Shopify, and Webflow APIs to a single canonical schema (TramaProduct, TramaCart, TramaCollection). The connector layer behind Trama — public so you can audit it, extend it, or self-host it.",
+  "license": "MIT",
+  "homepage": "https://gotrama.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gotrama-hq/trama-connectors.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gotrama-hq/trama-connectors/issues"
+  },
+  "keywords": [
+    "wix",
+    "shopify",
+    "webflow",
+    "headless",
+    "ecommerce",
+    "connector",
+    "trama",
+    "platform-agnostic"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./normalizers": {
+      "types": "./dist/normalizers/index.d.ts",
+      "import": "./dist/normalizers/index.mjs",
+      "require": "./dist/normalizers/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts src/normalizers/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts src/normalizers/index.ts --format esm,cjs --dts --watch",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "trama-types": "workspace:*",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^10.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
